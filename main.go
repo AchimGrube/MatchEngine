@@ -4,9 +4,17 @@ import (
 	"fmt"
 	"fussball2000/matchengine/ecs"
 	"fussball2000/matchengine/ecs/components"
+	"fussball2000/matchengine/loop"
 )
 
 func main() {
+	loop, err := loop.NewMatchLoop(90, (loop.PenaltyShootout), 30)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(loop)
+
 	registry := ecs.NewRegistry()
 
 	entity1, _ := registry.CreateEntity()
